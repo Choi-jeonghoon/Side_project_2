@@ -25,4 +25,8 @@ export class BoardsService {
     this.boards.push(board);
     return board;
   }
+  //특정 Id의 게시글 찾기
+  getBodarById(id: string): Board {
+    return this.boards.find((board) => board.id == id);
+  }
 }

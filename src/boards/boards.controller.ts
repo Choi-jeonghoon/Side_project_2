@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { Board } from './board.model';
 import { BoardsService } from './boards.service';
 import { CreateBoardDto } from './dto/create-board.dto';
@@ -35,5 +35,11 @@ export class BoardsController {
   createBoard(@Body() createBoardDto: CreateBoardDto): Board {
     //게시물 하나만 보내기때문에 [] 를 빼서 타입을 지정한다.
     return this.boardsService.creatBoard(createBoardDto);
+  }
+
+  //특정 id로 게시글 찾는 핸들러
+  @Get('/:id')
+  getBodarById(@Param('id') id: string) {
+    return this.boardsService.getBodarById(id);
   }
 }
