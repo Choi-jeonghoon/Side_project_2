@@ -1,4 +1,5 @@
 import { Controller, Get } from '@nestjs/common';
+import { Board } from './board.model';
 import { BoardsService } from './boards.service';
 
 @Controller('/boards')
@@ -23,7 +24,7 @@ export class BoardsController {
 
   //모든 게시물에 대한 핸들러
   @Get('/all')
-  getAllBoard() {
+  getAllBoard(): Board[] {
     return this.boardsService.getAllBoards();
   }
 }
