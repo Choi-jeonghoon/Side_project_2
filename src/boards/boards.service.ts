@@ -19,5 +19,7 @@ export class BoardsService {
       description: description,
       status: BoardStatus.PUBLIC,
     };
+    this.boards.push(board);
+    return board;
   }
 }
