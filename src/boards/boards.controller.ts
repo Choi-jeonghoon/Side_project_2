@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { Board } from './board.model';
 import { BoardsService } from './boards.service';
 
@@ -26,5 +26,16 @@ export class BoardsController {
   @Get('/all')
   getAllBoard(): Board[] {
     return this.boardsService.getAllBoards();
+  }
+  // 게시물 생성 핸들러
+  @Post('/create')
+  //@Body("title")title @Body("0000")0000이런식으로 가져오면 하나씩 가져온다
+  //@Body("Body")Body
+  createBoard(
+    @Body('title') title: string,
+    @Body('description') description: string,
+  ): Board {
+    //게시물 하나만 보내기때문에 [] 를 빼서 타입을 지정한다.
+    return this.boardsService.creatBoard(title, description);
   }
 }
