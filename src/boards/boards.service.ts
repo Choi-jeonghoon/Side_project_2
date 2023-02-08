@@ -29,4 +29,10 @@ export class BoardsService {
   getBodarById(id: string): Board {
     return this.boards.find((board) => board.id == id);
   }
+
+  //특정 ID의 게시글 삭제
+  deletBodarById(id: string): void {
+    this.boards = this.boards.filter((Board) => Board.id !== id);
+    //코드해석 : filter Bodard의 id값이 다른값은 유지하고 같은것은 지운다
+  }
 }
