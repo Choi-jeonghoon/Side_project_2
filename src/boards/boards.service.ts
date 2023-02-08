@@ -26,13 +26,21 @@ export class BoardsService {
     return board;
   }
   //특정 Id의 게시글 찾기
-  getBodarById(id: string): Board {
+  getBoardById(id: string): Board {
     return this.boards.find((board) => board.id == id);
   }
 
   //특정 ID의 게시글 삭제
-  deletBodarById(id: string): void {
+  deletBoardById(id: string): void {
     this.boards = this.boards.filter((Board) => Board.id !== id);
     //코드해석 : filter Bodard의 id값이 다른값은 유지하고 같은것은 지운다
+  }
+
+  //특정 ID의 게시글 업데이트
+  updateBoardById(id: string, status: BoardStatus): Board {
+    const board = this.getBoardById(id);
+    board.status = status;
+    return board;
+    //return 값을 반환해주지않으면 에러
   }
 }

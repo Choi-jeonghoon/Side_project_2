@@ -1,5 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
-import { Board } from './board.model';
+import { Patch } from '@nestjs/common/decorators';
+import { Board, BoardStatus } from './board.model';
 import { BoardsService } from './boards.service';
 import { CreateBoardDto } from './dto/create-board.dto';
 
@@ -40,12 +41,21 @@ export class BoardsController {
   //특정 id로 게시글 찾는 핸들러
   @Get('/:id')
   getBodarById(@Param('id') id: string) {
-    return this.boardsService.getBodarById(id);
+    return this.boardsService.getBoardById(id);
   }
 
   //특정 id로 게시글 삭제 핸들러
   @Delete('/:id')
   deletBodarById(@Param('id') id: string): void {
-    this.boardsService.deletBodarById(id);
+    this.boardsService.deletBoardById(id);
+  }
+
+  //특정 ID의 게시글 업데이트 핸들러
+  @Patch('/status/:id')
+  updateBoardStatus(
+    @Param('id') id: string,
+    @Body('status') status: BoardStatus,
+  ) {
+    return this.boardsService.updateBoardById(id, status);
   }
 }
