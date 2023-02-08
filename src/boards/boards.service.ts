@@ -42,7 +42,8 @@ export class BoardsService {
 
   //특정 ID의 게시글 삭제
   deletBoardById(id: string): void {
-    this.boards = this.boards.filter((Board) => Board.id !== id);
+    const found = this.getBoardById(id);
+    this.boards = this.boards.filter((Board) => Board.id !== found.id);
     //코드해석 : filter Bodard의 id값이 다른값은 유지하고 같은것은 지운다
   }
 
