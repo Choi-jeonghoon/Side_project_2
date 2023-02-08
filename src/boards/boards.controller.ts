@@ -1,5 +1,13 @@
-import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
-import { Patch } from '@nestjs/common/decorators';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  ValidationPipe,
+} from '@nestjs/common';
+import { Patch, UsePipes } from '@nestjs/common/decorators';
 import { Board, BoardStatus } from './board.model';
 import { BoardsService } from './boards.service';
 import { CreateBoardDto } from './dto/create-board.dto';
@@ -31,6 +39,7 @@ export class BoardsController {
   }
   // 게시물 생성 핸들러
   @Post('/create')
+  @UsePipes(ValidationPipe)
   //@Body("title")title @Body("0000")0000이런식으로 가져오면 하나씩 가져온다
   //@Body("Body")Body
   createBoard(@Body() createBoardDto: CreateBoardDto): Board {
