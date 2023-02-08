@@ -2,6 +2,7 @@ import { ArgumentMetadata, PipeTransform } from '@nestjs/common';
 import { BadRequestException } from '@nestjs/common/exceptions';
 import { BoardStatus } from '../board.model';
 
+// 커스텀pipe 기본적인 사항
 // export class BoardStatusValidationPipe implements PipeTransform {
 //   transform(value: any, metadata: ArgumentMetadata) {
 //     console.log('value', value);
