@@ -29,4 +29,4 @@ $ npm run test:cov
 ### API 명세서
 
 - postman을 이용한 명세서
-  https://documenter.getpostman.com/view/24826057/2s935ppi68
+  https://documenter.getpostman.com/view/24826057/2s935rHgmn
